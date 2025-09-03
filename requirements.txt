@@ -1,0 +1,7 @@
+# Email Batch Reader - minimal requirements
+
+# GUI
+tkinter ; python_version >= "3.8"
+
+# Everything else is built-in:
+# imaplib, threading, logging, scrolledtext, tkinter.ttk
