@@ -10,7 +10,8 @@ Developed with 🖤 by **[CMDKILL3R](https://github.com/cmdkill3r)**.
 ---
 
 ##  Features  
-- 🔑Secure login prompt (email + Gmail App Password)  
+- 🔑Secure login prompt (email + Gmail App Password)
+- Saves Gmail App Password securely after first use and auto-loads it next time  (python keyring)
 -  Scans inbox and counts total emails  
 -  Marks emails as read in batches (default: 200 per batch)  
 -  Dark-mode GUI with clean hacker aesthetic  
