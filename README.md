@@ -73,3 +73,6 @@ __pycache__/
 Developed with love and chaos by:
 CMDKILL3R
 🔗 github.com/cmdkill3r
+
+![License](https://img.shields.io/badge/License-MIT-green)
+
