@@ -9,14 +9,14 @@ Developed with 🖤 by **[CMDKILL3R](https://github.com/cmdkill3r)**.
 
 ---
 
-## 🚀 Features  
-- 🔑 Secure login prompt (email + Gmail App Password)  
-- 📥 Scans inbox and counts total emails  
-- ✅ Marks emails as read in batches (default: 200 per batch)  
-- 🌑 Dark-mode GUI with clean hacker aesthetic  
-- 📊 Progress bar + live status updates  
-- 🖥️ Log output inside the app + saved to `email_bot.log`  
-- 🔐 Password is never stored—entered at runtime only  
+##  Features  
+- 🔑Secure login prompt (email + Gmail App Password)  
+-  Scans inbox and counts total emails  
+-  Marks emails as read in batches (default: 200 per batch)  
+-  Dark-mode GUI with clean hacker aesthetic  
+-  Progress bar + live status updates  
+-  Log output inside the app + saved to `email_bot.log`  
+-  Password is never stored—entered at runtime only  
 
 ---
 
