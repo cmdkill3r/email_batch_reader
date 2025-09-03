@@ -3,12 +3,14 @@ import tkinter as tk
 from tkinter import ttk, messagebox, scrolledtext
 import threading
 import logging
+import keyring  # For storing/retrieving passwords securely
 
 # ---------------- CONFIG ----------------
 IMAP_SERVER = "imap.gmail.com"
 IMAP_PORT = 993
 MAILBOX = "INBOX"
 BATCH_SIZE = 200
+APP_NAME = "EmailBatchReader"  # Used for keyring
 
 # ---------------- LOGGING ----------------
 logging.basicConfig(
@@ -17,7 +19,14 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s"
 )
 
-# ---------------- FUNCTIONS ----------------
+# ---------------- PASSWORD STORAGE ----------------
+def save_password(email, password):
+    keyring.set_password(APP_NAME, email, password)
+
+def load_password(email):
+    return keyring.get_password(APP_NAME, email)
+
+# ---------------- EMAIL FUNCTION ----------------
 def mark_emails_read(email, app_password, log_callback, status_callback, progress_callback):
     try:
         status_callback("🔄 Connecting to server...")
@@ -48,6 +57,9 @@ def mark_emails_read(email, app_password, log_callback, status_callback, progres
         mail.logout()
         log_callback("🎉 All emails marked as read ✅")
         status_callback("✅ Done")
+
+        # Save password after successful run
+        save_password(email, app_password)
 
     except Exception as e:
         log_callback(f"❌ Error: {e}")
@@ -86,12 +98,13 @@ class EmailBatchReaderApp:
         ttk.Label(frame_inputs, text="Email:").grid(row=0, column=0, sticky="w", padx=5, pady=5)
         self.entry_email = ttk.Entry(frame_inputs, width=40)
         self.entry_email.grid(row=0, column=1, padx=5, pady=5)
+        self.entry_email.bind("<FocusOut>", self.load_password_if_exists)
 
         ttk.Label(frame_inputs, text="App Password:").grid(row=1, column=0, sticky="w", padx=5, pady=5)
         self.entry_password = ttk.Entry(frame_inputs, show="*", width=40)
         self.entry_password.grid(row=1, column=1, padx=5, pady=5)
 
-        # Run button
+        # Button
         self.btn_mark = ttk.Button(root, text="▶ Mark Emails as Read", command=self.start_marking)
         self.btn_mark.pack(pady=10)
 
@@ -108,6 +121,15 @@ class EmailBatchReaderApp:
         self.status_var = tk.StringVar(value="💤 Idle")
         self.status_bar = ttk.Label(root, textvariable=self.status_var, anchor="w", font=("Segoe UI", 9))
         self.status_bar.pack(fill="x", side="bottom")
+
+    def load_password_if_exists(self, event=None):
+        email = self.entry_email.get()
+        if email:
+            stored_pass = load_password(email)
+            if stored_pass:
+                self.entry_password.delete(0, tk.END)
+                self.entry_password.insert(0, stored_pass)
+                self.set_status("🔑 Password loaded from storage")
 
     def log(self, message):
         self.log_area.insert(tk.END, message + "\n")
