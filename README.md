@@ -29,7 +29,9 @@ Screenshots
 ### Main Window  
 ![Email Batch Reader Main Window](main_window.png)  
 
-### Example Run  
+Example Run
+-
+
 ![Email Batch Reader Run Example](run_example.png)  
 -
 
