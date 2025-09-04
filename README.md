@@ -31,6 +31,7 @@ Screenshots
 
 ### Example Run  
 ![Email Batch Reader Run Example](run_example.png)  
+-
 
 ---
 
