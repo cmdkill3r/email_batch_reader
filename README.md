@@ -46,7 +46,7 @@ Installation
    cd email-batch-reader
    ```
 
-Install dependencies (Tkinter comes pre-installed with Python, but make sure you have it):
+Install dependencies (Tkinter comes pre-installed with Python, but make sure you have it.
 -
 
 ```
@@ -77,7 +77,6 @@ __pycache__/
 *.pyc
 *.pyo
 ```
-
 Author
 -
 Developed with 🖤 by:
