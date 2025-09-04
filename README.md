@@ -3,7 +3,7 @@ Email Batch Reader
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)  
 ![License](https://img.shields.io/badge/License-MIT-green)  
-![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20Mac-black)  
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20-black)  
 
 Dark-themed desktop GUI tool to connect to your Gmail inbox and **mark emails as read in batches**.  
 Developed with 🖤 by **[CMDKILL3R](https://github.com/cmdkill3r)**.  
